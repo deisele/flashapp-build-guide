@@ -154,7 +154,8 @@ temperature converter example project in this repository):
       (`C:\sierra\bin\asm68.exe -Q interface.s -o interface.o`)
 7. run the linker to link all object files
    (`C:\sierra\bin\link68.exe -Q -r -L"C:\sierra\lib" -o temperature_converter.out temperature_converter.o interface.o -lams SECTIONS{GROUP:{.text:{}.const:{}.data:{}.bss:{}}}`)
-8. run sdkpc.exe to sign and generate the final *.9xk file
+8. run sdkpc.exe to sign and generate the final *.9xk file, the last parameter
+   is the internal application name which may not be longer than 8 characters
    (`C:\sierra\bin\sdkpc.exe -O3 -s C:\sierra\keys\sdk-92p.key 92 temperature_converter.out TempConv`)
 
 After the build completed successfully you will get the *.9xk file which you can
