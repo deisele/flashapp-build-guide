@@ -72,7 +72,8 @@ For more information on the TI keys and how TI Flash Studio stores them take a
 look at the "Keys" section at the end of this document.
 
 As the default project template is buggy an messed up, replace it with the new
-one.
+one from this repository. You can find the default template folder in the
+program folder of TI Flash Studio.
 
 When you've got everything set up, launch TI Flash Studio, click
 "File -> New Project.." and select "TI-92 Plus - Flash Application" (select this
