@@ -73,4 +73,4 @@ build_script:
     C:\sierra\bin\sdkpc.exe -O3 -s C:\sierra\keys\sdk-92p.key 92 temperature_converter.out TempConv
 
 artifacts:
-- path: C:\projects\flashapp-build-guide\temperature_converter_example\TempConv.9xk
+- path: temperature_converter_example\TempConv.9xk
