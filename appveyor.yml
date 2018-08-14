@@ -1,0 +1,73 @@
+version: 1.0.{build}
+
+install:
+- cmd: |
+    if exist C:\sierra\ SET cached=true
+
+    if not defined cached mkdir C:\sierra_temp
+    if not defined cached cd \sierra_temp
+
+    if not defined cached curl -O https://cchsindy.org/bird/TTT/FlashStudio1.1.43.exe
+    if not defined cached echo 7852add8b12bb1e138f7f3c1e8fb1af127cea00f1d0a15d1f4583fb96216dec0 *FlashStudio1.1.43.exe| sha256sum -c > nul
+
+    if not defined cached curl -O https://kannegieser.net/veit/programm/e_wise.arj
+    if not defined cached echo a2fc915847ee397a7b28c346b50852ee3bb477b5aec41384dd47742220b2a0dd *e_wise.arj| sha256sum -c > nul
+
+    if not defined cached 7z x e_wise.arj -oe_wise > nul
+
+    if not defined cached e_wise\E_WISE_W.EXE FlashStudio1.1.43.exe FlashStudio > nul
+    if not defined cached cd FlashStudio
+    if not defined cached 00000000.BAT > nul
+    if not defined cached cd ..\..
+
+    if not defined cached move sierra_temp\FlashStudio\SIERRALOC . > nul
+    if not defined cached ren SIERRALOC sierra
+    if not defined cached cd sierra
+    if not defined cached ren BIN bin
+    if not defined cached ren INCLUDE include
+    if not defined cached ren LIB lib
+    if not defined cached cd lib
+    if not defined cached ren LIBAMS.68 libams.68
+    if not defined cached cd ..\..
+    if not defined cached move sierra_temp\FlashStudio\MAINDIR\TI68kTool.dll sierra\bin\ > nul
+
+    if not defined cached rd /s /q sierra_temp
+
+    if not defined cached REM Really ugly way of patching one byte in the resource compiler binary
+    if not defined cached cd sierra\bin
+    if not defined cached 7z a rc32 -mx0 -v32b -v2b -v1b -v4542b -v1b -v81470b Rc32.exe > nul
+    if not defined cached del Rc32.exe
+    if not defined cached copy /b rc32.7z.002+rc32.7z.003+rc32.7z.004+rc32.7z.003+rc32.7z.006 rc32.exe > nul
+    if not defined cached del rc32.7z.*
+
+    if not defined cached cd ..
+
+    if not defined cached mkdir keys
+    if not defined cached cd keys
+    if not defined cached echo 0101> sdk-92p.key
+    if not defined cached echo 406104CDFAD955D41F1ECCB9B622007FE8BC75E8B28DA178334755FEF27C564D47B04FD82498C163B762991C68CF64E29236BC41A4C1BCB9793B6EE965407C74BC>> sdk-92p.key
+    if not defined cached echo x|set /p unused="40E17C4AA4C942CC57282E9B911E7B39352A2D8D4EC15398366C971FF7D2D92FB18D35D60A78C086CCE0F08F0F4CC36F676A4604E529DD72C95C11AED2F48D6D37" >> sdk-92p.key
+    if not defined cached set unused=
+    
+cache: C:\sierra\
+
+build_script:
+- cmd: |
+    cd C:\projects\temperature_converter_example\
+
+    C:\sierra\bin\com68.exe -E -Q -I.\ -I C:\sierra\include interface.r interface.i
+
+    C:\sierra\bin\rc32.exe -mn interface.r
+
+    C:\sierra\bin\com68.exe -D_92 -q -Q -l -Oc1f0l3m1p1r2x1 -Xbef3IL -I C:\sierra\include temperature_converter.c temperature_converter.s_
+
+    C:\sierra\bin\fline.exe temperature_converter.s_ temperature_converter.s
+
+    C:\sierra\bin\asm68.exe -Q temperature_converter.s -o temperature_converter.o
+
+    C:\sierra\bin\asm68.exe -Q interface.S -o interface.o
+
+    REM TI Flash Studio also used -m
+    C:\sierra\bin\link68.exe -Q -r -L"C:\sierra\lib" -o temperature_converter.out temperature_converter.o interface.o -lams SECTIONS{GROUP:{.text:{}.const:{}.data:{}.bss:{}}}
+
+    C:\sierra\bin\sdkpc.exe -O3 -s C:\sierra\keys\sdk-92p.key 92 temperature_converter.out TempConv

@@ -1,0 +1,6 @@
+#define ACM_WINSTR	0x500
+#define ACM_DIALOG	0x501
+#define ACM_POPUP	0x502
+#define ACM_NOTHING	0x503
+#define ACM_HFONT	0x504
+
