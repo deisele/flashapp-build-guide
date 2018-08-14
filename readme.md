@@ -122,7 +122,7 @@ The following list contains the steps needed to set up the build tools:
 3. run `00000000.BAT` in the generated folder, this gives the extracted files
    their correct names
 4. copy the contents of the extracted SIERRALOC folder to "C:\sierra\"
-   (destination can be any folder you like, in this example and in the appveyor
+   (destination can be any folder you like, in this example and in the AppVeyor
    script I use "C:\\sierra\\")
 5. copy the extracted TI68kTool.dll (from the MAINDIR folder) to
    "C:\\sierra\\bin\\"
@@ -169,9 +169,9 @@ tried it so far.
 As the extracted and patched build tools now work on modern operating systems,
 you can set up continous integration / cloud build. To do that I basically
 turned the previous section into a small script which can setup the compiler and
-build the project on the Appveyor cloud infrastucture.
+build the project on the AppVeyor cloud infrastucture.
 
-The Appveyor CMD script isn't really pretty but... mmh... but... at least it
+The AppVeyor CMD script isn't really pretty but... mmh... but... at least it
 works. The code which patches the binary is especially ugly because Windows
 doesn't have a built in patch command. Patching is currently done by splicing
 rc32.exe with 7zip into several parts, replacing one part and stitching them
@@ -179,8 +179,10 @@ back together afterwards.
 
 So if you want to build FlashApps with minmal effort, just fork this GitHub
 repository, setup AppVeyor with your GitHub account and the example project (a
-temperature unit converter) will be built on the AppVeyor servers. If everything
-works you can then modify the source code and create your own FlashApp.
+temperature unit converter) will be built on the AppVeyor servers. The compiled
+binary (the *.9xk file) will be exported as an AppVeyor artifact, which you can
+download on the AppVeyor web interface. Once everything works you can modify the
+source code and create your own FlashApp.
 
 ## SDK Documentation
 The documentation for the 68k calculator SDK is split up into two files:
