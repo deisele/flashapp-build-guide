@@ -191,7 +191,7 @@ example some of the code samples are a bit sloppy (bad PRNG code, ...), so don't
 just blindly copy something.
 
 ## Tips for developing FlashApps
-* look at other open source FlashApps to see how the're done, for example:
+* look at other open source FlashApps to see how they're done, for example:
   * Command Post Plus
   * Blocks on the Rocks
 * use Command Post Plus to test your FlashApp for memory leaks or to see how
