@@ -72,5 +72,7 @@ build_script:
 
     C:\sierra\bin\sdkpc.exe -O3 -s C:\sierra\keys\sdk-92p.key 92 temperature_converter.out TempConv
 
+    ren temperature_converter.9xk TempConv.9xk
+
 artifacts:
 - path: temperature_converter_example\TempConv.9xk
