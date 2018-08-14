@@ -76,3 +76,5 @@ build_script:
 
 artifacts:
 - path: temperature_converter_example\TempConv.9xk
+  name: TempConv.9xk
+  type: file
