@@ -53,7 +53,7 @@ cache: C:\sierra\
 
 build_script:
 - cmd: |
-    cd C:\projects\temperature_converter_example\
+    cd C:\projects\flashapp-build-guide\temperature_converter_example\
 
     C:\sierra\bin\com68.exe -E -Q -I.\ -I C:\sierra\include interface.r interface.i
 
