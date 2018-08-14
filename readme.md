@@ -100,7 +100,7 @@ like 7 or 10, and probably even on Linux (with Wine).
 
 To be able to use these build tools you need extract them from the installer.
 The TI Flash Studio installer is a WISE installer, so we can use the tool
-[E_WISE](http://kannegieser.net/veit/programm/index_e.htm) to unpack it.
+[E_WISE](https://kannegieser.net/veit/programm/index_e.htm) to unpack it.
 
 Once you've extracted the build tools there's only one problem left: the
 resource compiler (rc32.exe) returns with the exit code -65536, even if the
