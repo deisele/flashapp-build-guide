@@ -184,6 +184,11 @@ binary (the *.9xk file) will be exported as an AppVeyor artifact, which you can
 download on the AppVeyor web interface. Once everything works you can modify the
 source code and create your own FlashApp.
 
+As you can see here, you can also add a nice badge to your repository, which
+indicates the build status of your project:
+
+[![Build status](https://ci.appveyor.com/api/projects/status/0a2j9tfnx6l5ilf8/branch/master?svg=true)](https://ci.appveyor.com/project/deisele/flashapp-build-guide/branch/master)
+
 ## SDK Documentation
 The documentation for the 68k calculator SDK is split up into two files:
 * sdk8992pguide.pdf (developer guide for TIOS)
