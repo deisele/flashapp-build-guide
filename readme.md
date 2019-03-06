@@ -104,16 +104,16 @@ The TI Flash Studio installer is a WISE installer, so we can use the tool
 
 Once you've extracted the build tools there's only one problem left: the
 resource compiler (rc32.exe) returns with the exit code -65536, even if the
-comilation was successful. If you don't care about the exit code then this isn't
-a problem, but most build systems (make, ...) will abort the build if a command
-returns a non-zero exit code. Luckily this can be prevented by patching a single
-byte in rc32.exe. Replace the byte `hex 66` at offset `hex 11C1` with the byte
-`hex 90`. `hex 66` is an x86 instruction prefix which switches a command from
-32 bit to 16 bit. The command in question is `XOR EAX EAX` which should set the
-return value in the EAX register to zero, but because of the instruction prefix
-only the lower 16 bits of the EAX register are cleared, while the upper 16 bits
-stay at `hex FFFF`. So the solution for this problem is to just replace the
-instruction prefix with a nop instruction (`hex 90`).
+compilation was successful. If you don't care about the exit code then this
+isn't a problem, but most build systems (make, ...) will abort the build if a
+command returns a non-zero exit code. Luckily this can be prevented by patching
+a single byte in rc32.exe. Replace the byte `hex 66` at offset `hex 11C1` with
+the byte `hex 90`. `hex 66` is an x86 instruction prefix which switches a
+command from 32 bit to 16 bit. The command in question is `XOR EAX EAX` which
+should set the return value in the EAX register to zero, but because of the
+instruction prefix only the lower 16 bits of the EAX register are cleared, while
+the upper 16 bits stay at `hex FFFF`. So the solution for this problem is to
+just replace the instruction prefix with a nop instruction (`hex 90`).
 
 The following list contains the steps needed to set up the build tools:
 1. extract the archive e_wise.arj (for example with 7zip)
@@ -162,7 +162,7 @@ After the build completed successfully you will get the *.9xk file which you can
 send to your calculator.
 
 If you've tried this with Wine on Linux, please let me know if it worked, so I
-can app this information to this file. It should probably work, but I haven't
+can add this information to this file. It should probably work, but I haven't
 tried it so far.
 
 ## AppVeyor cloud build
@@ -206,7 +206,7 @@ just blindly copy something.
 * use Command Post Plus to test your FlashApp for memory leaks or to see how
   your FlashApp behaves in low memory situations etc.
 * always test on a simulator (for example TiEmu), otherwise you could crash your
-  calculator and loose all your files or if you have a memory leak, you would
+  calculator and lose all your files or if you have a memory leak, you would
   only be able to get your leaked memory back by resetting your calculator
 * references to local variables cost much less memory than references to global
   variables, so if you often have to access global variables it's more memory
