@@ -1,24 +1,29 @@
 
 # Building Flash Apps with TI Flash Studio and Sierra 68k C Compiler
 
-The purpose of this repository is to provide comprehensive information on how to
-set up TI Flash Studio and/or the Sierra 68k C Compiler and how to get started
-building FlashApps for TI 68k calculators (TI-89 (Titanium), TI-92 Plus and
-TI Voyage 200).
+This repository is a guide on how to set up the TI Flash Studio build tools,
+with or without the IDE, and how to get started building FlashApps for TI 68k
+calculators (TI-89 (Titanium), TI-92 Plus and TI Voyage 200).
 
 ## Overview
-The TI Flash Studio IDE itself only works on Windows XP, so if you want to use
-the IDE then you need to run it in a virtual machine or on an older PC. The
-reason for this is that the IDE uses the discontinued Microsoft Java Virtual
-Machine.
+The TI Flash Studio IDE itself requires the Microsoft Java Virtual Machine,
+which is not supported by Microsoft anymore. You can however still use it, even
+on Windows 7 and Windows 10. The installation is described in the "IDE with
+build tools" section.
+
+Note: A previous version of this guide stated that the Microsoft Java VM is only
+compatible with Windows XP. This is actually *not* the case. I recently tried to
+install the Microsoft Java VM on a Windows 7 and a Windows 10 PC and to my
+surprise it worked (there were some warning messages on Windows 7, but I just
+ignored them).
 
 However all the underlying build tools (compiler, assembler, linker, ...) don't
-have this dependency, which means they can be used on newer Windows versions
-like 7 or 10, and probably even on Linux (with Wine).
+depend on the Microsoft Java VM, and can be installed without the IDE. This is
+described in the "Build tools (compiler, ...) without IDE" section.
 
-You can also run the build tools in the cloud (AppVeyor cloud in the example).
-This is also the best way to get started with minimal effort. Take a look at the
-"AppVeyor cloud build" section if you want to use this.
+It is also possible to run the build on a continuous integration service
+(AppVeyor in the example). This is the easiest way if you want to get started
+with minimal effort. The setup is described in the "AppVeyor build" section.
 
 Feel free to send me an email (daniel_eisele@gmx.de) if you have any questions.
 
@@ -43,7 +48,7 @@ please let me know.
 | [sdk8992pguide.pdf](https://web.archive.org/web/20130712132251/http://isa.umh.es/calc/TI/TI89-92SDK/sdk8992pguide.pdf)                                 | 5ECE362291188E03025291B1421A1B62E9FD28609907C12F793DC158DCEFC19F |
 | [sdk8992pcompiler.pdf](https://web.archive.org/web/20130712132305/http://isa.umh.es/calc/TI/TI89-92SDK/sdk8992pcompiler.pdf)                           | 51B842428C8D76A243F2C6A0510349737B2ABA0ECF815E166E9368E650CC7D9C |
 
-## IDE (Windows XP only)
+## IDE with build tools
 Before installing TI Flash Studio you first have to install the Microsoft Java
 Virtual Machine (msjavx86.exe).
 
@@ -92,13 +97,8 @@ done by using the 8.3 file/directory names, which is the default when you open
 the .fsp project file directly from the explorer. More info about 8.3 file names
 here: https://en.wikipedia.org/wiki/8.3_filename
 
-## Build tools (compiler, ...) without IDE (works on Windows 7 and newer)
-The only part of TI Flash Studio that requires Windows XP is the IDE itself.
-However all the underlying build tools (compiler, assembler, linker, ...) don't
-have this dependency, which means they can be used on newer Windows versions
-like 7 or 10, and probably even on Linux (with Wine).
-
-To be able to use these build tools you need extract them from the installer.
+## Build tools (compiler, ...) without IDE
+To install the build tools, they first need to be extracted from the installer.
 The TI Flash Studio installer is a WISE installer, so we can use the tool
 [E_WISE](https://kannegieser.net/veit/programm/index_e.htm) to unpack it.
 
@@ -165,11 +165,11 @@ If you've tried this with Wine on Linux, please let me know if it worked, so I
 can add this information to this file. It should probably work, but I haven't
 tried it so far.
 
-## AppVeyor cloud build
-As the extracted and patched build tools now work on modern operating systems,
-you can set up continous integration / cloud build. To do that I basically
-turned the previous section into a small script which can setup the compiler and
-build the project on the AppVeyor cloud infrastucture.
+## AppVeyor build
+To demonstrate that the extracted and patched build tools work, I have set up
+continous integration / cloud build on this repository. To do that I basically
+turned the previous section into a small script (appveyor.yml), which sets up
+the compiler and build the project on the AppVeyor cloud infrastructure.
 
 The AppVeyor CMD script isn't really pretty but... mmh... but... at least it
 works. The code which patches the binary is especially ugly because Windows
