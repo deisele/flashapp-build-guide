@@ -25,6 +25,10 @@ It is also possible to run the build on a continuous integration service
 (AppVeyor in the example). This is the easiest way if you want to get started
 with minimal effort. The setup is described in the "AppVeyor build" section.
 
+I only own a TI Voyage 200, so the exact instructions in this guide are written
+for the TI V200 and the TI-92, but with some small adaptions (target specific
+compiler flags, ...) they will of course also work for the TI-89.
+
 Feel free to send me an email (daniel_eisele@gmx.de) if you have any questions.
 
 ## Files and checksums
@@ -234,3 +238,6 @@ For the TI-92 Plus Flash application signing key the file looks like this:
     0101
     406104CDFAD955D41F1ECCB9B622007FE8BC75E8B28DA178334755FEF27C564D47B04FD82498C163B762991C68CF64E29236BC41A4C1BCB9793B6EE965407C74BC
     40E17C4AA4C942CC57282E9B911E7B39352A2D8D4EC15398366C971FF7D2D92FB18D35D60A78C086CCE0F08F0F4CC36F676A4604E529DD72C95C11AED2F48D6D37
+
+I haven't fully tested key compatibility between calculator models yet, but the
+TI-92 key also works for the TI Voyage 200.
