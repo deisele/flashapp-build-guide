@@ -45,7 +45,7 @@ please let me know.
 
 | File name                                                                                                                                              | SHA256 checksum                                                  |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
-| [FlashStudio1.1.43.exe](https://cchsindy.org/bird/TTT/FlashStudio1.1.43.exe)                                                                           | 7852ADD8B12BB1E138F7F3C1E8FB1AF127CEA00F1D0A15D1F4583FB96216DEC0 |
+| [FlashStudio1.1.43.exe](https://web.archive.org/web/20180813210746/https://cchsindy.org/bird/TTT/FlashStudio1.1.43.exe)                                | 7852ADD8B12BB1E138F7F3C1E8FB1AF127CEA00F1D0A15D1F4583FB96216DEC0 |
 | [TIFlashStudio.exe](https://web.archive.org/web/20130712132409/http://isa.umh.es/calc/TI/TI89-92SDK/TIFlashStudio.exe) (also called fsinst_1.1.34.exe) | 93DE72CD174A947A351790EBF240FD0444C27F129CE35BF5B7E8DE54E42331B9 |
 | [msjavx86.exe](http://java-virtual-machine.net/download.html)                                                                                          | 03E38318FA34AD2AEFF00517AE6D72E05588509E1C549D9147029483D08CF2B5 |
 | [e_wise.arj](https://kannegieser.net/veit/programm/e_wise.arj)                                                                                         | A2FC915847EE397A7B28C346B50852EE3BB477B5AEC41384DD47742220B2A0DD |

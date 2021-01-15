@@ -7,7 +7,7 @@ install:
     if not defined cached mkdir C:\sierra_temp
     if not defined cached cd \sierra_temp
 
-    if not defined cached curl -O https://cchsindy.org/bird/TTT/FlashStudio1.1.43.exe
+    if not defined cached curl -O https://web.archive.org/web/20180813210746if_/https://cchsindy.org/bird/TTT/FlashStudio1.1.43.exe
     if not defined cached echo 7852add8b12bb1e138f7f3c1e8fb1af127cea00f1d0a15d1f4583fb96216dec0 *FlashStudio1.1.43.exe| sha256sum -c > nul
 
     if not defined cached curl -O https://kannegieser.net/veit/programm/e_wise.arj
